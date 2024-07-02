@@ -5,6 +5,10 @@ from model import *
 def home():
     return render_template("home.html")
 
+@app.route("/about")
+def about():
+    return render_template("about.html")
+
 @app.route("/listar_pessoas")
 def listar_pessoas():
     with db_session:
@@ -29,6 +33,9 @@ def adicionar_pessoa():
         # salvar
         commit()
         # encaminhar de volta para a listagem
-        return redirect("listar_pessoas")
+        return redirect("listar_pessoas") 
 
-app.run()
+'''
+run:
+$ flask run
+'''
