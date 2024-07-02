@@ -5,10 +5,6 @@ from model import *
 def home():
     return render_template("home.html")
 
-@app.route("/about")
-def about():
-    return render_template("about.html")
-
 @app.route("/listar_pessoas")
 def listar_pessoas():
     with db_session:
