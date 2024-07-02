@@ -5,19 +5,19 @@ from model import *
 def home():
     return render_template("home.html")
 
-@app.route("/listar_pessoas")
-def listar_pessoas():
+@app.route("/listar_animais")
+def listar_animais():
     with db_session:
-        # obtém as pessoas
+        # obtém os animais
         animais = Animal.select() 
-        return render_template("listar_pessoas.html", animais=animais)
+        return render_template("listar_animais.html", animais=animais)
 
-@app.route("/form_adicionar_pessoa")
-def form_adicionar_pessoa():
-    return render_template("form_adicionar_pessoa.html")
+@app.route("/form_adicionar_animal")
+def form_adicionar_animal():
+    return render_template("form_adicionar_animal.html")
 
-@app.route("/adicionar_pessoa")
-def adicionar_pessoa():
+@app.route("/adicionar_animal")
+def adicionar_animal():
     # obter os parâmetros
     nome = request.args.get("nome")
     alimentacao = request.args.get("alimentacao")
@@ -26,12 +26,12 @@ def adicionar_pessoa():
     especie = request.args.get("especie")
     # salvar
     with db_session:
-        # criar a pessoa
+        # criar o animal
         a = Animal(**request.args)
         # salvar
         commit()
         # encaminhar de volta para a listagem
-        return redirect("listar_pessoas")
+        return redirect("listar_animais")
 
 #usei chat gpt nessa parte
 @app.route("/excluir_animal/<int:id>", methods=['POST'])
@@ -49,6 +49,6 @@ def excluir_animal(id):
     except Exception as e:
         app.logger.error(f"Error deleting animal with ID {id}: {str(e)}")
         return render_template("error.html", message=str(e))
-    return redirect(url_for('listar_pessoas'))
+    return redirect(url_for('listar_animais'))
 
 app.run(debug=True)
