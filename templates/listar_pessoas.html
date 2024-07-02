@@ -7,22 +7,29 @@
 {% block content %}
   
 <p>
-    <a href="{{ url_for("form_adicionar_pessoa") }}">Cadastrar nova pessoa</a>
+    <a href="{{ url_for("form_adicionar_pessoa") }}">Cadastrar animal</a>
 </p>
 
 <table border="1">
     <tr>
         <td>Nome</td>
-        <td>Email</td>
-        <td>Telefone</td>
+        <td>alimentacao</td>
+        <td>sexo</td>
+        <td>idade</td>
+        <td>especie</td>
     </tr>
 
-    {% for p in pessoas %}
+    {% for a in animais %}
     <tr>
-        <td>{{p.nome}}</td>
-        <td>{{p.email}}</td>
-        <td>{{p.telefone}}</td>
+        <td>{{a.nome}}</td>
+        <td>{{a.alimentacao}}</td>
+        <td>{{a.sexo}}</td>
+        <td>{{a.idade}}</td>
+        <td>{{a.especie}}</td>
     </tr>
+        <form action="{{ url_for('excluir_animal', id=a.id) }}" method="POST" style="display:inline;">
+            <button type="submit">Excluir</button>
+        </form>
     {% endfor %}
    
 </table>
