@@ -29,9 +29,6 @@ def adicionar_pessoa():
         # salvar
         commit()
         # encaminhar de volta para a listagem
-        return redirect("listar_pessoas") 
+        return redirect("listar_pessoas")
 
-'''
-run:
-$ flask run
-'''
+app.run()
