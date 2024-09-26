@@ -1,0 +1,37 @@
+{% extends 'main_template.html' %}
+
+{% block header %}
+  <h1>{% block title %}Listagem{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  
+<p>
+    <a href="{{ url_for("form_adicionar_animal") }}">Cadastrar animal</a>
+</p>
+
+<table border="1">
+    <tr>
+        <td>Nome</td>
+        <td>alimentacao</td>
+        <td>sexo</td>
+        <td>idade</td>
+        <td>especie</td>
+    </tr>
+
+    {% for a in animais %}
+    <tr>
+        <td>{{a.nome}}</td>
+        <td>{{a.alimentacao}}</td>
+        <td>{{a.sexo}}</td>
+        <td>{{a.idade}}</td>
+        <td>{{a.especie}}</td>
+    </tr>
+        <form action="{{ url_for('excluir_animal', id=a.id) }}" method="POST" style="display:inline;">
+            <button type="submit">Excluir</button>
+        </form>
+    {% endfor %}
+   
+</table>
+
+{% endblock %}

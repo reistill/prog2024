@@ -1,0 +1,24 @@
+<!doctype html>
+
+<head>
+    <title>{% block title %}{% endblock %} - Sistema Cadastrador</title>
+    <link rel="stylesheet" href="/static/css/mycss.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <h1 id="prim">Cadastrador 1.2</h1>
+
+    <section id="links">
+        <a href="{{ url_for("home") }}">Página inicial</a> | 
+        <a href="{{ url_for("listar_animais") }}">Listagem</a>
+    </section>
+
+    <section id="content">
+        <header> {% block header %}{% endblock %} </header>
+
+        {% block content %}{% endblock %}
+    </section>
+
+    <footer><p>&copy;JoelReis</p></footer>
+</body>
